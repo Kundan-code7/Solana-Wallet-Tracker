@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana AI Trading Assistant</title>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <!-- Sidebar Navigation - Matching index.html exactly -->
+    <aside class="sidebar">
+        <div class="logo">Solana Tracker</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <span>Home</span>
+            </li>
+            <li class="nav-item">
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item">
+                <span>HNI Wallets</span>
+            </li>
+            <li class="nav-item">
+                <span>Copy Trading</span>
+            </li>
+            <!-- AI Assistant added above Settings to match your structure -->
+            <li class="nav-item active">
+                <span>AI Assistant</span>
+            </li>
+            <li class="nav-item">
+                <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-left">
+                <h1 class="page-title">AI Trading Assistant</h1>
+                <p class="page-subtitle">Get real-time Solana trading insights and wallet analysis powered by AI</p>
+            </div>
+            <div class="header-right">
+                <div class="connection-status">
+                    <span class="status-dot" id="connectionStatus"></span>
+                    <span id="lastUpdate">Ready</span>
+                </div>
+                <button class="btn btn-secondary" onclick="clearChat()">
+                    <span>🗑</span>
+                    Clear Chat
+                </button>
+            </div>
+        </section>
+
+        <!-- API Key Setup -->
+        <div id="api-key-section" class="api-key-card">
+            <div class="api-key-header">
+                <h3>🔑 API Configuration</h3>
+                <p>Set up your API keys to enable AI-powered trading insights</p>
+            </div>
+            <div class="api-key-form">
+                <div class="form-group">
+                    <label class="form-label">Gemini API Key</label>
+                    <input 
+                        type="password" 
+                        id="api-key-input" 
+                        class="form-input" 
+                        placeholder="Enter your Gemini API key (AIza...)"
+                        autocomplete="off"
+                    />
+                    <small class="form-help">Required for AI responses</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Helius API Key</label>
+                    <input 
+                        type="password" 
+                        id="helius-key-input" 
+                        class="form-input" 
+                        placeholder="Enter your Helius API key (optional)"
+                        autocomplete="off"
+                    />
+                    <small class="form-help">Optional for real-time Solana data</small>
+                </div>
+                <div class="api-key-actions">
+                    <button id="save-api-key" class="btn btn-primary">
+                        <span>💾</span>
+                        Save API Keys
+                    </button>
+                    <a href="https://makersuite.google.com/app/apikey" target="_blank" class="api-key-link">
+                        Get free Gemini API key →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Messages Area -->
+            <div class="messages-section">
+                <div id="messages-container" class="messages-container">
+                    <!-- Welcome Message -->
+                    <div class="message assistant-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Solana AI Assistant</span>
+                                <span class="message-time">Just now</span>
+                            </div>
+                            <div class="message-text">
+                                Welcome to your Solana Trading Assistant! I can help you:
+                                <br><br>
+                                • Analyze wallet performance and trading patterns<br>
+                                • Provide real-time market insights<br>
+                                • Suggest copy trading strategies<br>
+                                • Explain complex trading metrics<br>
+                                • Identify profitable opportunities
+                                <br><br>
+                                Set up your API keys above to get started with AI-powered analysis!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts -->
+                <div class="quick-prompts-section">
+                    <h4>Quick Questions</h4>
+                    <div class="quick-prompts-grid">
+                        <button class="quick-prompt-card" data-prompt="Which wallet should I copy for maximum returns?">
+                            <div class="prompt-icon">📈</div>
+                            <div class="prompt-content">
+                                <div class="prompt-title">Best Wallet to Copy</div>
+                                <div class="prompt-desc">Get AI recommendations</div>
+                            </div>
+                        </button>
+                        <button class="quick-prompt-card" data-prompt="Analyze the current Solana market trends and top performing wallets">
+                            <div class="prompt-icon">🔍</div>
+                            <div class="prompt-content">
+                                <div class="prompt-title">Market Analysis</div>
+                                <div class="prompt-desc">Current trends & insights</div>
+                            </div>
+                        </button>
+                        <button class="quick-prompt-card" data-prompt="Explain the difference between win rate and ROI in crypto trading">
+                            <div class="prompt-icon">📊</div>
+                            <div class="prompt-content">
+                                <div class="prompt-title">Win Rate vs ROI</div>
+                                <div class="prompt-desc">Key metrics explained</div>
+                            </div>
+                        </button>
+                        <button class="quick-prompt-card" data-prompt="What trading strategy should I use for Solana tokens right now?">
+                            <div class="prompt-icon">🎯</div>
+                            <div class="prompt-content">
+                                <div class="prompt-title">Trading Strategy</div>
+                                <div class="prompt-desc">AI-powered suggestions</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-section">
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="user-input" 
+                            class="user-input" 
+                            placeholder="Ask about wallets, trading strategies, market analysis..."
+                            disabled
+                        />
+                        <button id="send-btn" class="send-btn" disabled aria-label="Send message">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="input-help">
+                        Press Enter to send • Shift+Enter for new line
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar with Market Data -->
+            <aside class="chat-sidebar">
+                <div class="sidebar-section">
+                    <h4>📊 Live Market Data</h4>
+                    <div class="market-card">
+                        <div class="market-item">
+                            <span class="market-label">SOL Price</span>
+                            <span class="market-value" id="sol-price">$185.65</span>
+                            <span class="market-change positive" id="sol-change">+4.14%</span>
+                        </div>
+                        <div class="market-item">
+                            <span class="market-label">Market Cap</span>
+                            <span class="market-value">$82.4B</span>
+                        </div>
+                        <div class="market-item">
+                            <span class="market-label">24h Volume</span>
+                            <span class="market-value">$3.2B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>👥 Top Traders</h4>
+                    <div class="traders-list">
+                        <div class="trader-item">
+                            <div class="trader-avatar">M</div>
+                            <div class="trader-info">
+                                <div class="trader-name">MegaWhale</div>
+                                <div class="trader-stats">
+                                    <span class="stat positive">+15.0%</span>
+                                    <span class="stat">73% WR</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trader-item">
+                            <div class="trader-avatar">S</div>
+                            <div class="trader-info">
+                                <div class="trader-name">SmartTrader</div>
+                                <div class="trader-stats">
+                                    <span class="stat positive">+22.7%</span>
+                                    <span class="stat">68% WR</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trader-item">
+                            <div class="trader-avatar">W</div>
+                            <div class="trader-info">
+                                <div class="trader-name">Wali...</div>
+                                <div class="trader-stats">
+                                    <span class="stat positive">+8.1%</span>
+                                    <span class="stat">82% WR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>💡 Tips</h4>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <div class="tip-icon">🔍</div>
+                            <div class="tip-text">Ask about specific wallet addresses for detailed analysis</div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">📈</div>
+                            <div class="tip-text">Get real-time market insights and trading signals</div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🔄</div>
+                            <div class="tip-text">Compare multiple trading strategies side by side</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>

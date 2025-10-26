@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Trading - Solana HNI Tracker</title>
+    <link rel="stylesheet" href="copy-trading.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">Solana Tracker</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <span>Home</span>
+            </li>
+            <li class="nav-item">
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item">
+                <span>HNI Wallets</span>
+            </li>
+            <li class="nav-item active">
+                <span>Copy Trading</span>
+            </li>
+             <li class="nav-item">
+                <span>AI Assistant</span>
+            <li class="nav-item">
+                <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-left">
+                <h1 class="page-title">Copy Trading</h1>
+                <p class="page-subtitle">Automatically replicate successful trader strategies</p>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" onclick="openStartCopyModal()">
+                    <span>⚡</span>
+                    Start Copy Trading
+                </button>
+                <div class="connection-status">
+                    <span class="status-dot" id="connectionStatus"></span>
+                    <span id="lastUpdate">Updating...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Copy Trades -->
+        <section class="active-section">
+            <div class="section-header">
+                <h2 class="section-title">Active Copy Trades</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="pauseAllCopies()">
+                        <span>⏸️</span>
+                        Pause All
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshAllData()">
+                        <span>🔄</span>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+
+            <div class="active-grid" id="activeCopiesGrid">
+                <!-- Active copies will be populated dynamically -->
+            </div>
+        </section>
+
+        <!-- Available Traders -->
+        <section class="available-section">
+            <div class="section-header">
+                <h2 class="section-title">Available Traders to Copy</h2>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="high-roi">High ROI</button>
+                    <button class="filter-btn" data-filter="consistent">Consistent</button>
+                    <button class="filter-btn" data-filter="low-risk">Low Risk</button>
+                </div>
+            </div>
+
+            <div class="traders-grid" id="tradersGrid">
+                <!-- Traders will be populated dynamically -->
+            </div>
+        </section>
+
+        <!-- Copy Trading Statistics -->
+        <section class="stats-overview">
+            <h2 class="section-title">Copy Trading Performance</h2>
+            <div class="stats-cards" id="statsCards">
+                <!-- Stats will be populated dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Copy Trading Settings</h3>
+                <button class="close-modal" onclick="closeSettingsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Max Investment per Trade ($)</label>
+                    <input type="number" id="maxPerTrade" class="form-input" min="10" step="10">
+                </div>
+                <div class="form-group">
+                    <label>Stop Loss (%)</label>
+                    <input type="number" id="stopLoss" class="form-input" min="1" max="50" step="1">
+                </div>
+                <div class="form-group">
+                    <label>Take Profit (%)</label>
+                    <input type="number" id="takeProfit" class="form-input" min="5" max="100" step="5">
+                </div>
+                <div class="form-group">
+                    <label>Slippage Tolerance (%)</label>
+                    <input type="number" id="slippage" class="form-input" min="0.1" max="10" step="0.1" value="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeSettingsModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="copy-trading.js"></script>
+</body>
+</html>

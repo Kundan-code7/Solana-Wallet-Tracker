@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana HNI Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="wallet-manager.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.min.js"></script> -->
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">Solana Tracker</div>
+        <ul class="nav-menu">
+            <li class="nav-item active">
+                <span>Home</span>
+            </li>
+            <li class="nav-item">
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item">
+                <span>HNI Wallets</span>
+            </li>
+            <li class="nav-item">
+                <span>Copy Trading</span>
+            </li>
+            <li class="nav-item">
+                <span>AI Assistant</span>
+            <li class="nav-item">
+                <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Solana HNI Tracker</h1>
+            <p class="hero-subtitle">Track high-net-worth wallets, analyze trades, and copy successful strategies with AI-powered insights</p>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="exploreWallets()">
+                    <span>💼</span>
+                    Explore HNI Wallets
+                </button>
+                <button class="btn btn-secondary" onclick="addWallet()">
+                    <span>+</span>
+                    Add Wallet to Track
+                </button>
+            </div>
+
+            <div class="price-card">
+                <div class="price-icon">◎</div>
+                <div class="price-info">
+                    <div class="price-label">Solana Price</div>
+                    <div class="price-value">$185.65</div>
+                </div>
+                <div class="price-change">
+                    <span>↗</span>
+                    <span>~4.14%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card-large">
+                    <div class="stat-number">1</div>
+                    <div class="stat-title">Total HNI Wallets</div>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-number">0</div>
+                    <div class="stat-title">Active Traders</div>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-number">0.0%</div>
+                    <div class="stat-title">Top ROI</div>
+                </div>
+                <div class="stat-card-large">
+                    <div class="stat-number">0.0%</div>
+                    <div class="stat-title">Avg Win Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending and Profitable Section -->
+        <section class="trending-section">
+            <div class="trending-grid">
+                <div class="trending-card">
+                    <div class="trending-header">
+                        <div class="trending-number">2</div>
+                        <h3 class="trending-title">Trending HNI</h3>
+                    </div>
+                    <div class="wallet-item">
+                        <div class="wallet-avatar-small">W</div>
+                        <div class="wallet-info-small">
+                            <div class="wallet-name-small">Wali...</div>
+                            <div class="wallet-details">
+                                <span class="roi-positive">+8.08%</span>
+                                <span class="wallet-address-small">3k0026...</span>
+                            </div>
+                        </div>
+                        <div class="wallet-followers">0 followers</div>
+                    </div>
+                </div>
+                
+                <div class="trending-card">
+                    <div class="trending-header">
+                        <div class="trending-number">4</div>
+                        <h3 class="trending-title">Most Profitable</h3>
+                    </div>
+                    <div class="wallet-item">
+                        <div class="wallet-avatar-small">W</div>
+                        <div class="wallet-info-small">
+                            <div class="wallet-name-small">Wali...</div>
+                            <div class="wallet-details">
+                                <span class="roi-positive">+8.08%</span>
+                                <span class="wallet-profit">$0.0K profit</span>
+                            </div>
+                        </div>
+                        <div class="wallet-rank">1</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View All Button -->
+        <section class="view-all-section">
+            <button class="btn btn-view-all" onclick="exploreWallets()">
+                View All HNI Wallets
+            </button>
+        </section>
+
+        <!-- Feature Grid -->
+        <section class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3 class="feature-title">Wallet Tracking</h3>
+                <p class="feature-description">Monitor high-value wallets and their trading patterns in real-time</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Smart Analytics</h3>
+                <p class="feature-description">AI-powered insights to identify profitable trading strategies</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">Copy Trading</h3>
+                <p class="feature-description">Automatically replicate successful trader movements</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">Performance Metrics</h3>
+                <p class="feature-description">Detailed statistics and historical performance data</p>
+            </div>
+        </section>
+        <!-- Modal for adding wallet -->
+<div id="addWalletModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Wallet to Track</h3>
+            <button class="close-modal" onclick="closeAddWalletModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="addWalletForm">
+                <div class="form-group">
+                    <label for="walletAddress">Wallet Address</label>
+                    <input 
+                        type="text" 
+                        id="walletAddress" 
+                        class="form-input" 
+                        placeholder="Enter Solana wallet address (43-44 characters)"
+                        required
+                    />
+                    <div class="input-helper">Example: 4ZJhPQAgUseCsWhKvJLTmmRRUV74fdoTpQLNfKoekbPY</div>
+                    <div id="validationError" class="validation-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="walletName">Wallet Name (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="walletName" 
+                        class="form-input" 
+                        placeholder="Give this wallet a nickname"
+                        maxlength="30"
+                    />
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeAddWalletModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="submitWallet()">Add Wallet</button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

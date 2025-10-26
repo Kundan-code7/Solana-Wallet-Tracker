@@ -1,0 +1,335 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - Solana HNI Tracker</title>
+        <link rel="stylesheet" href="dashboard.css">
+    </head>
+    <body>
+        <aside class="sidebar">
+            <div class="logo">Solana Tracker</div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <span>Home</span>
+                </li>
+                <li class="nav-item active">
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <span>HNI Wallets</span>
+                </li>
+                <li class="nav-item">
+                    <span>Copy Trading</span>
+                </li>
+                 <li class="nav-item">
+                <span>AI Assistant</span>
+                <li class="nav-item">
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <section class="dashboard-header">
+                <div class="header-left">
+                    <h1 class="page-title">Dashboard Overview</h1>
+                    <p class="page-subtitle">Real-time insights into your tracked wallets and trading performance</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-refresh" onclick="refreshData()">
+                        <span>🔄</span>
+                        Refresh Data
+                    </button>
+                </div>
+            </section>
+
+            <!-- Key Metrics -->
+            <section class="metrics-section">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon blue">💰</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Total Portfolio Value</div>
+                            <div class="metric-value">$124,567.89</div>
+                            <div class="metric-change positive">+12.5% (24h)</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon green">📈</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Total Profit/Loss</div>
+                            <div class="metric-value">+$23,456.12</div>
+                            <div class="metric-change positive">+18.8% ROI</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon purple">🎯</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Active Positions</div>
+                            <div class="metric-value">12</div>
+                            <div class="metric-change neutral">3 winning, 9 holding</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon orange">⚡</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Today's Trades</div>
+                            <div class="metric-value">8</div>
+                            <div class="metric-change positive">+5 from yesterday</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <div class="chart-card large">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Portfolio Performance (7 Days)</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active">7D</button>
+                                <button class="chart-btn">30D</button>
+                                <button class="chart-btn">90D</button>
+                                <button class="chart-btn">All</button>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <svg viewBox="0 0 600 200" class="line-chart">
+                                <polyline points="0,150 50,120 100,140 150,90 200,100 250,70 300,85 350,50 400,65 450,40 500,30 550,45 600,25" 
+                                        fill="none" 
+                                        stroke="url(#gradient)" 
+                                        stroke-width="3"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card small">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Win Rate</h3>
+                        </div>
+                        <div class="donut-chart">
+                            <svg viewBox="0 0 200 200" class="donut-svg">
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="20"/>
+                                <circle cx="100" cy="100" r="70" fill="none" stroke="#10b981" stroke-width="20" 
+                                        stroke-dasharray="308 440" stroke-dashoffset="0" 
+                                        transform="rotate(-90 100 100)"/>
+                            </svg>
+                            <div class="donut-center">
+                                <div class="donut-value">70%</div>
+                                <div class="donut-label">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tracked Wallets & Recent Activity -->
+            <section class="content-grid">
+                <div class="tracked-wallets-card">
+                    <div class="section-header">
+                        <h3 class="section-title">Tracked HNI Wallets</h3>
+                        <button class="btn-link">View All →</button>
+                    </div>
+                    <div class="wallets-list">
+                        <div class="wallet-row">
+                            <div class="wallet-avatar">W</div>
+                            <div class="wallet-info">
+                                <div class="wallet-name">Wali...</div>
+                                <div class="wallet-address">3k0026...x7Yz</div>
+                            </div>
+                            <div class="wallet-stats">
+                                <div class="wallet-stat">
+                                    <span class="stat-label">ROI</span>
+                                    <span class="stat-value positive">+8.08%</span>
+                                </div>
+                                <div class="wallet-stat">
+                                    <span class="stat-label">Trades</span>
+                                    <span class="stat-value">42</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-icon">👁️</button>
+                        </div>
+                        
+                        <div class="wallet-row">
+                            <div class="wallet-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">M</div>
+                            <div class="wallet-info">
+                                <div class="wallet-name">MegaWhale</div>
+                                <div class="wallet-address">7a9Bc1...k3Lm</div>
+                            </div>
+                            <div class="wallet-stats">
+                                <div class="wallet-stat">
+                                    <span class="stat-label">ROI</span>
+                                    <span class="stat-value positive">+15.3%</span>
+                                </div>
+                                <div class="wallet-stat">
+                                    <span class="stat-label">Trades</span>
+                                    <span class="stat-value">67</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-icon">👁️</button>
+                        </div>
+                        
+                        <div class="wallet-row">
+                            <div class="wallet-avatar" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">S</div>
+                            <div class="wallet-info">
+                                <div class="wallet-name">SmartTrader</div>
+                                <div class="wallet-address">4c2De5...p9Qr</div>
+                            </div>
+                            <div class="wallet-stats">
+                                <div class="wallet-stat">
+                                    <span class="stat-label">ROI</span>
+                                    <span class="stat-value positive">+22.7%</span>
+                                </div>
+                                <div class="wallet-stat">
+                                    <span class="stat-label">Trades</span>
+                                    <span class="stat-value">89</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-icon">👁️</button>
+                        </div>
+                        
+                        <div class="wallet-row">
+                            <div class="wallet-avatar" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">D</div>
+                            <div class="wallet-info">
+                                <div class="wallet-name">DeFiKing</div>
+                                <div class="wallet-address">9f8Gh6...t1Uv</div>
+                            </div>
+                            <div class="wallet-stats">
+                                <div class="wallet-stat">
+                                    <span class="stat-label">ROI</span>
+                                    <span class="stat-value negative">-3.2%</span>
+                                </div>
+                                <div class="wallet-stat">
+                                    <span class="stat-label">Trades</span>
+                                    <span class="stat-value">31</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-icon">👁️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity-card">
+                    <div class="section-header">
+                        <h3 class="section-title">Recent Activity</h3>
+                        <button class="btn-link">View All →</button>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon buy">📥</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Buy Order Executed</div>
+                                <div class="activity-meta">MegaWhale • 2 minutes ago</div>
+                            </div>
+                            <div class="activity-amount positive">+500 SOL</div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon sell">📤</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Sell Order Executed</div>
+                                <div class="activity-meta">SmartTrader • 15 minutes ago</div>
+                            </div>
+                            <div class="activity-amount negative">-250 BONK</div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon swap">🔄</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Token Swap</div>
+                                <div class="activity-meta">DeFiKing • 1 hour ago</div>
+                            </div>
+                            <div class="activity-amount">SOL → USDC</div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon buy">📥</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Buy Order Executed</div>
+                                <div class="activity-meta">Wali... • 2 hours ago</div>
+                            </div>
+                            <div class="activity-amount positive">+1000 JUP</div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon alert">⚠️</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Large Transaction Alert</div>
+                                <div class="activity-meta">MegaWhale • 3 hours ago</div>
+                            </div>
+                            <div class="activity-amount">$50K+</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Performing Tokens -->
+            <section class="tokens-section">
+                <div class="section-header">
+                    <h3 class="section-title">Top Performing Tokens</h3>
+                    <button class="btn-link">View All →</button>
+                </div>
+                <div class="tokens-grid">
+                    <div class="token-card">
+                        <div class="token-header">
+                            <div class="token-icon">◎</div>
+                            <div class="token-info">
+                                <div class="token-name">Solana</div>
+                                <div class="token-symbol">SOL</div>
+                            </div>
+                        </div>
+                        <div class="token-price">$185.65</div>
+                        <div class="token-change positive">+4.14%</div>
+                    </div>
+                    
+                    <div class="token-card">
+                        <div class="token-header">
+                            <div class="token-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">J</div>
+                            <div class="token-info">
+                                <div class="token-name">Jupiter</div>
+                                <div class="token-symbol">JUP</div>
+                            </div>
+                        </div>
+                        <div class="token-price">$1.23</div>
+                        <div class="token-change positive">+8.7%</div>
+                    </div>
+                    
+                    <div class="token-card">
+                        <div class="token-header">
+                            <div class="token-icon" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">B</div>
+                            <div class="token-info">
+                                <div class="token-name">Bonk</div>
+                                <div class="token-symbol">BONK</div>
+                            </div>
+                        </div>
+                        <div class="token-price">$0.000024</div>
+                        <div class="token-change negative">-2.3%</div>
+                    </div>
+                    
+                    <div class="token-card">
+                        <div class="token-header">
+                            <div class="token-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">R</div>
+                            <div class="token-info">
+                                <div class="token-name">Raydium</div>
+                                <div class="token-symbol">RAY</div>
+                            </div>
+                        </div>
+                        <div class="token-price">$3.45</div>
+                        <div class="token-change positive">+12.4%</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    <script src="dashboard.js"></script>
+    </body>
+    </html>

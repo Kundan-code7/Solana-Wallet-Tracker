@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HNI Wallets - Solana Tracker</title>
+    <link rel="stylesheet" href="hni-style.css">
+    <script src="wallet-manager.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">Solana Tracker</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <span>Home</span>
+            </li>
+            <li class="nav-item">
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item active">
+                <span>HNI Wallets</span>
+            </li>
+            <li class="nav-item">
+                <span>Copy Trading</span>
+            </li>
+             <li class="nav-item">
+                <span>AI Assistant</span>
+            <li class="nav-item">
+                <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="header">
+            <div class="header-left">
+                <h1>HNI Wallets</h1>
+                <p>Track and analyze high-net-worth wallets on Solana</p>
+            </div>
+            <div class="header-actions">
+                <button class="filter-btn">🔽 Sort by ROI</button>
+                <input type="text" class="search-box" placeholder="Search wallets...">
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Total Wallets</div>
+                <div class="stat-value">156</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Average ROI</div>
+                <div class="stat-value roi-positive">+67.8%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value">12,394</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Now</div>
+                <div class="stat-value">89</div>
+            </div>
+        </div>
+
+        <div class="wallets-grid" id="walletsGrid">
+            <!-- Wallets will be dynamically generated -->
+        </div>
+    </main>
+
+    <script src="hni-script.js"></script>
+</body>
+</html>
